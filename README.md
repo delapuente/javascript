@@ -354,10 +354,10 @@
 
     ```javascript
     // bad
-    superPower = new SuperPower();
+    superPower = createSuperPower();
 
     // good
-    var superPower = new SuperPower();
+    var superPower = createSuperPower();
     ```
 
   - Use one `var` declaration for each variable and declare each variable on a newline.
@@ -1145,7 +1145,39 @@
 
 ## Constructors
 
-  - Assign methods to the prototype object, instead of overwriting the prototype with a new object. Overwriting the prototype makes inheritance impossible: by resetting the prototype you'll overwrite the base!
+  - Prefer factories over prototypes
+  
+    ```javascript
+    // bad
+    function Widget(name) {
+      this.privateField = 'Hello ';
+      this.name = name;
+    }
+    
+    Widget.prototype.publicMethod = function() {
+      return this.privateField + this.name + '!';
+    }
+    
+    var widget = new Widget('Testing');
+    
+    // good
+    var createWidget = function(name) {
+      var api = new (function Widget(){})();
+
+      var privateField = 'Hello ';
+    
+      api.publicMethod = function() {
+        return privateField + name + '!';
+      };
+    
+      return api;
+    }
+    
+    var widget = createWidget('Testing!');
+  ```
+  - Use prototypes only when an extremely large number of objects will be created (think in the millions)
+  - You're probably better off not using prototype then either.
+  - If you are using it though, assign methods to the prototype object, instead of overwriting the prototype with a new object. Overwriting the prototype makes inheritance impossible: by resetting the prototype you'll overwrite the base!
 
     ```javascript
     function Jedi() {
@@ -1177,31 +1209,47 @@
 
     ```javascript
     // bad
-    Jedi.prototype.jump = function() {
-      this.jumping = true;
-      return true;
+    var createJedi = function() {
+      var api = {};
+      var jumping = false;
+      var height;
+
+      api.jump = function() {
+        jumping = true;
+        return true;
+      };
+  
+      api.setHeight = function(newHeight) {
+        height = newHeight;
+      };
+      
+      return api;
     };
 
-    Jedi.prototype.setHeight = function(height) {
-      this.height = height;
-    };
-
-    var luke = new Jedi();
+    var luke = createJedi();
     luke.jump(); // => true
     luke.setHeight(20) // => undefined
 
     // good
-    Jedi.prototype.jump = function() {
-      this.jumping = true;
-      return this;
+    var createJedi = function() {
+      var api = {};
+      var jumping = false;
+      var height;
+
+      api.jump = function() {
+        jumping = true;
+        return api;
+      };
+  
+      api.setHeight = function(newHeight) {
+        height = newHeight;
+        return api;
+      };
+      
+      return api;
     };
 
-    Jedi.prototype.setHeight = function(height) {
-      this.height = height;
-      return this;
-    };
-
-    var luke = new Jedi();
+    var luke = createJedi();
 
     luke.jump()
       .setHeight(20);
@@ -1211,17 +1259,20 @@
   - It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
 
     ```javascript
-    function Jedi(options) {
+    var createJedi = function(options) {
+      var api = new (function Jedi() { })();
       options || (options = {});
-      this.name = options.name || 'no name';
-    }
-
-    Jedi.prototype.getName = function getName() {
-      return this.name;
-    };
-
-    Jedi.prototype.toString = function toString() {
-      return 'Jedi - ' + this.getName();
+      var name = options.name || 'no name';
+        
+      api.getName = function getName() {
+        return name;
+      };
+      
+      api.toString = function toString() {
+        return 'Jedi - ' + name;
+      };
+      
+      return api;
     };
     ```
 
@@ -1270,18 +1321,18 @@
     !function(global) {
       'use strict';
 
-      var previousFancyInput = global.FancyInput;
+      var previousFancyInput = global.createFancyInput;
 
-      function FancyInput(options) {
-        this.options = options || {};
+      function createFancyInput(options) {
+        var options = options || {};
       }
 
-      FancyInput.noConflict = function noConflict() {
-        global.FancyInput = previousFancyInput;
-        return FancyInput;
+      createFancyInput.noConflict = function noConflict() {
+        global.createFancyInput = previousFancyInput;
+        return createFancyInput;
       };
 
-      global.FancyInput = FancyInput;
+      global.createFancyInput = createFancyInput;
     }(this);
     ```
 
