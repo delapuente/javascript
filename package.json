@@ -1,0 +1,24 @@
+{
+  "name": "opentok-style",
+  "version": "1.0.0",
+  "description": "A mostly reasonable approach to JavaScript.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish-all": "npm publish && cd ./packages/eslint-config-opentok && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opentok/javascript.git"
+  },
+  "keywords": [
+    "style guide",
+    "lint",
+    "opentok"
+  ],
+  "author": "Patrick Quinn-Graham <pqg@tokbox.com> (https://github.com/thepatrick)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/opentok/javascript/issues"
+  },
+  "homepage": "https://github.com/opentok/javascript"
+}
