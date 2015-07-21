@@ -110,8 +110,6 @@
     "no-void": 0,                    // disallow use of void operator (off by default)
     "no-warning-comments": 1,   // disallow usage of configurable warning terms in comments, e.g. TODO or FIXME (off by default)
 
-
-    // move to top
     // opentok/javascript: Proposed additions: Variables
     "no-delete-var": 2,               // disallow deletion of variables
     "no-undef-init": 1,               // disallow use of undefined when initializing variables
@@ -138,17 +136,14 @@
     // Likely contentious, ... [2, "always"] or [2, "never"]
     "padded-blocks": 0,             // enforce padding within blocks (off by default)
     "quote-props": [2, "as-needed"],  // require quotes around object literal property names (off by default)
-    "spaced-line-comment": 2,        // http://eslint.org/docs/rules/spaced-line-comment
-
-
+    "spaced-comment": [2, "always"],  // http://eslint.org/docs/rules/spaced-comment
+    
     // opentok/javascript: OBJECTS
-
     "no-new-wrappers": 2,       // disallows creating new instances of String, Number, and Boolean
     "no-new-object": 2,             // disallow use of the Object constructor
     "no-reserved-keys": 2,        // disallow reserved words being used as object literal keys (off by default)
 
     // opentok/javascript: ARRAYS
-
     "no-array-constructor": 2,      // disallow use of the Array constructor
 
     // opentok/javascript: STRINGS
@@ -156,7 +151,6 @@
 
     // opentok/javascript: FUNCTIONS
     "no-inner-declarations": 2,   // disallow function or variable declarations in nested blocks
-
     "no-shadow": 0,                   // disallow declaration of variables already declared in the outer scope
     "no-shadow-restricted-names": 2,  // disallow shadowing of names such as arguments
 
