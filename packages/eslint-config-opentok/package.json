@@ -1,0 +1,33 @@
+{
+  "name": "eslint-config-opentok",
+  "version": "0.0.1",
+  "description": "Tokbox's ESLint config, following our styleguide",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opentok/javascript"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "config",
+    "opentok",
+    "javascript",
+    "styleguide"
+  ],
+  "author": "Patrick Quinn-Graham <pqg@tokbox.com> (https://github.com/thepatrick)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/opentok/javascript/issues"
+  },
+  "homepage": "https://github.com/opentok/javascript",
+  "dependencies": {
+    "eslint": "^0.24.1",
+    "opentok-style": "1.0.0",
+    "resolve": "1.1.6",
+    "strip-json-comments": "1.0.2"
+  }
+}
