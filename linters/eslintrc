@@ -108,7 +108,7 @@
     "no-iterator": 2,                // disallow usage of __iterator__ property
     "no-unused-expressions": 2,      // disallow usage of expressions in statement position
     "no-void": 0,                    // disallow use of void operator (off by default)
-    "no-warning-comments": 1,   // disallow usage of configurable warning terms in comments, e.g. TODO or FIXME (off by default)
+    "no-warning-comments": 1,        // disallow usage of configurable warning terms in comments, e.g. TODO or FIXME (off by default)
 
     // opentok/javascript: Proposed additions: Variables
     "no-delete-var": 2,               // disallow deletion of variables
@@ -138,7 +138,6 @@
     // opentok/javascript: OBJECTS
     "no-new-wrappers": 2,       // disallows creating new instances of String, Number, and Boolean
     "no-new-object": 2,             // disallow use of the Object constructor
-    "no-reserved-keys": 2,        // disallow reserved words being used as object literal keys (off by default)
 
     // opentok/javascript: ARRAYS
     "no-array-constructor": 2,      // disallow use of the Array constructor
