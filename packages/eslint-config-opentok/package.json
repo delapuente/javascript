@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-opentok",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Tokbox's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/opentok/javascript",
   "dependencies": {
-    "eslint": "^0.24.1",
-    "opentok-style": "1.0.0",
+    "eslint": "^1.0.0",
+    "opentok-style": "1.0.1",
     "resolve": "1.1.6",
     "strip-json-comments": "1.0.2"
   }
